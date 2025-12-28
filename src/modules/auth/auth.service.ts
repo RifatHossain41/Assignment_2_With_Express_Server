@@ -42,10 +42,10 @@ const signIn = async (email: string, password: string) => {
     { id: user.id, name: user.name, email: user.email, role: user.role },
     jwt_secret as string,
     {
-      expiresIn: "7d",
+      expiresIn: "30d",
     }
   );
-  //   console.log(user);
+  // console.log({ user });
   return { token, user };
 };
 

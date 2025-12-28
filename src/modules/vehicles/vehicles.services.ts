@@ -23,6 +23,7 @@ const createVehicles = async (
   return result;
 };
 
+
 // get all vehicle
 const getVehicles = async () => {
   const result = await pool.query(`SELECT * FROM vehicles`);

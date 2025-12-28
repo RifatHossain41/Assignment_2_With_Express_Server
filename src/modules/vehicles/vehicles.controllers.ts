@@ -3,9 +3,14 @@ import { vehicleServices } from "../vehicles/vehicles.services";
 
 // post vehicle
 const createVehicles = async (req: Request, res: Response) => {
-  const { vehicle_name, type, registration_number, daily_rent_price, availability_status } =
-    req.body;
-
+  const {
+    vehicle_name,
+    type,
+    registration_number,
+    daily_rent_price,
+    availability_status,
+  } = req.body;
+  // console.log(req.body)
   try {
     const result = await vehicleServices.createVehicles(
       vehicle_name,
@@ -30,7 +35,7 @@ const createVehicles = async (req: Request, res: Response) => {
 // get all vehicles
 const getVehicles = async (req: Request, res: Response) => {
   try {
-   const result = await vehicleServices.getVehicles()
+    const result = await vehicleServices.getVehicles();
     res.status(201).json({
       success: true,
       message: "Vehicles retrieved successfully",
@@ -43,7 +48,7 @@ const getVehicles = async (req: Request, res: Response) => {
       details: error,
     });
   }
-}
+};
 
 // get single vehicle
 const getSingleVehicle = async (req: Request, res: Response) => {
@@ -106,13 +111,13 @@ const updateVehicle = async (req: Request, res: Response) => {
 };
 
 // delete vehicle
-const deleteVehice = async (req: Request, res: Response) => {
+const deleteVehicle = async (req: Request, res: Response) => {
   try {
     const result = await vehicleServices.deleteVehicle(req.params.vehicleId!);
     res.status(200).json({
       success: true,
       message: "User deleted successfully",
-      data: result.rows[0],
+      data: [],
     });
   } catch (error: any) {
     res.status(500).json({
@@ -127,5 +132,5 @@ export const vehiclesController = {
   getVehicles,
   getSingleVehicle,
   updateVehicle,
-  deleteVehice
+  deleteVehicle,
 };
